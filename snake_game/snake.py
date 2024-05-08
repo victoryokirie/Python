@@ -1,14 +1,21 @@
 from turtle import Turtle
+## Constants
 STARTING_POSITIONS = [(0,0), (-20,0), (-40,0)]
 
 MOVE_DISTANCE = 20
+
+UP = 90
+LEFT = 180
+RIGHT = 0
+DOWN = 270
 
 class Snake():
     def __init__(self):
         self.segments = []
         self.create_snake()
+        self.head = self.segments[0] ## The first segment of the snake
 
-    ## this method creates a new snake
+    ## this method creates a new snake instance
     def create_snake(self):
         for position in STARTING_POSITIONS:
             new_segment = Turtle(shape="square")
@@ -29,5 +36,23 @@ class Snake():
             self.segments[seg_number].goto(new_x, new_y)
 
         # To move the first segment forward by 20 paces
-        self.segments[0].forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE)
 
+    ## methods created to control the snake headings UP DOWN LEFT RIGHT
+    def right(self):
+        if self.head.heading != LEFT:
+            self.head.setheading(RIGHT)
+
+    def up(self):
+        if self.head.heading != DOWN:
+            self.head.setheading(UP)
+
+    def left(self):
+        if self.head.heading != RIGHT:
+            self.head.setheading(LEFT)
+
+    def down(self):
+        if self.head.heading != UP:
+            self.head.setheading(DOWN)
+
+    

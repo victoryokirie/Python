@@ -2,6 +2,7 @@ import time
 from turtle import Screen
 from player import Player
 from car_manager import CarManager
+from scoreboard import Scoreboard
 
 
 screen = Screen()
@@ -10,6 +11,7 @@ screen.tracer(0)
 
 player = Player()
 car_manager = CarManager()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(player.move_up, "Up")
@@ -32,6 +34,7 @@ while game_is_on:
     ## Detect when player is at finish line
     if player.finish_line():
         player.go_to_start()
+        scoreboard.increase_level()
 
 
 

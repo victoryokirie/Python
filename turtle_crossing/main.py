@@ -24,6 +24,14 @@ while game_is_on:
     car_manager.move_cars()
 
 
+    ## Detect Collision with car
+    for car in car_manager.all_cars:
+        if player.distance(car) < 20:
+            game_is_on = False
+
+    ## Detect when player is at finish line
+    if player.finish_line():
+        player.go_to_start()
 
 
 
